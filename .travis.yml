@@ -30,6 +30,13 @@ install:
 notifications:
   email: false
 
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  skip_cleanup: true
+  file_glob: true
+  prerelease: true
+  file:
+    - packages/graphql-playground-electron/build-electron/**/*.exe
+  on:
+    branch: master

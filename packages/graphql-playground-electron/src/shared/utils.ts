@@ -9,6 +9,11 @@ export const newWindowConfig: Electron.BrowserWindowConstructorOptions = {
   titleBarStyle: 'hiddenInset',
   icon: path.join(__dirname, '../static/icons/icon.icns'),
   backgroundColor: '#0F202D',
+  webPreferences: {
+    webSecurity:false,
+    allowRunningInsecureContent:true,
+    devTools:true    
+  }
 }
 
 export function createRemoteWindow() {
