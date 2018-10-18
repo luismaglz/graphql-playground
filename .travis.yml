@@ -19,7 +19,7 @@ install:
   - |
   - cd packages/graphql-playground-react
   - yarn link
-  - cd..
+  - cd ..
   - cd packages/graphql-playground-react
   - yarn link graphql-playground-react
   - yarn install
