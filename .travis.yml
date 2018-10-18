@@ -20,7 +20,7 @@ install:
   - cd packages/graphql-playground-react
   - yarn link
   - cd ..
-  - cd packages/graphql-playground-electron
+  - cd graphql-playground-electron
   - yarn link graphql-playground-react
   - yarn install
   - yarn release
