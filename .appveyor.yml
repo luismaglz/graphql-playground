@@ -18,8 +18,6 @@ install:
   - node --version
   - npm --version
   - npm config set msvs_version 2015
-  - npm run bootstrap
-  - npm test
 
 #---------------------------------#
 #       tests configuration       #
