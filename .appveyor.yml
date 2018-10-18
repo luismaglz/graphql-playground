@@ -1,0 +1,51 @@
+image: Visual Studio 2015
+build: off
+test: off
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+shallow_clone: true
+platform: x64
+environment:
+  NODEJS_VERSION: "8"
+
+# Things to install after repo clone
+install:
+  - SET "PATH=%PATH%;C:\Program Files\Git\mingw64\libexec\git-core" # For weird git bug
+  - ps: Install-Product node $env:NODEJS_VERSION $env:Platform
+  - node --version
+  - npm --version
+  - npm config set msvs_version 2015
+  - npm run bootstrap
+  - npm test
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+build_script:
+  - cd packages/graphql-playground-electron
+  - yarn install
+  - yarn release
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  - path: packages\graphql-playground-electron\build-electron\*
+    name: dist
+
+# #---------------------------------#
+# #     deployment configuration    #
+# #---------------------------------#
+
+# deploy:
+#   description: ''
+#   provider: GitHub
+#   auth_token:
+#     secure: 99623c6683cb84099c2db8a6aa25e1b7981ea676
+#   artifact: dist
+#   prerelease: true
