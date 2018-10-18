@@ -15,10 +15,13 @@ cache:
 git:
   depth: 5
 
-install:
+before_install:
   - |
   - cd packages/graphql-playground-react
   - yarn link
+
+install:
+  - |
   - cd packages/graphql-playground-electron
   - yarn link graphql-playground-react
   - yarn install
