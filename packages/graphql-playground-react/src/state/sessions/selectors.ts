@@ -121,13 +121,13 @@ export function getParsedVariablesFromSession(session) {
   const variables = session.variables
 
   try {
-    const json = JSON.parse(variables)
+    const json = variables
     return json
   } catch (e) {
     //
   }
 
-  return {}
+  return ''
 }
 
 export const getTracing = createSelector(

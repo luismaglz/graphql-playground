@@ -120,7 +120,7 @@ function* runQuerySaga(action) {
   const request = {
     query: session.query,
     operationName,
-    variables: getParsedVariablesFromSession(session),
+    variables: session.variables || '',
   }
   const operation = makeOperation(request)
   const operationIsSubscription = isSubscription(operation)

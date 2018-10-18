@@ -2,7 +2,9 @@ os: osx
 osx_image: xcode9.2
 
 language: node_js
-node_js: "8"
+node_js:
+  - "8"
+  - "10"
 
 cache:
   directories:
@@ -15,19 +17,23 @@ git:
 
 install:
   - |
-    security create-keychain -p travis build.keychain
-    security default-keychain -s build.keychain
-    security unlock-keychain -p travis build.keychain
-    echo $CERTIFICATE_OSX_P12 | base64 --decode > certificate.p12
-    security import certificate.p12 -k build.keychain -P $CERTIFICATE_OSX_PASSWORD -T /usr/bin/codesign
-    security set-key-partition-list -S apple-tool:,apple: -s -k travis build.keychain
-  - cd packages/graphql-playground-electron
+  - cd packages/graphql-playground-react
+  - yarn link
+  - cd ..
+  - cd graphql-playground-electron
+  - yarn link graphql-playground-react
   - yarn install
   - yarn release
 
 notifications:
   email: false
 
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  skip_cleanup: true
+  file_glob: true
+  prerelease: true
+  file:
+    - packages/graphql-playground-electron/build-electron/GraphQL Playground Setup 1.8.0.exe
+    - build-electron/GraphQL Playground Setup 1.8.0.exe
