@@ -31,6 +31,5 @@ deploy:
   file_glob: true
   prerelease: true
   file:
-    - packages/graphql-playground-electron/build-electron/**/*.exe
-  on:
-    branch: master
+    - packages/graphql-playground-electron/build-electron/GraphQL Playground Setup 1.8.0.exe
+    - build-electron/GraphQL Playground Setup 1.8.0.exe
