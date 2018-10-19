@@ -17,11 +17,32 @@ git:
 
 install:
   - |
-  - cd packages/graphql-playground-react
+  - cd packages
+  - cd graphql-playground-react
+  - yarn link
+  - cd ..
+  - cd graphql-playground-html
+  - yarn link
+  - cd ..
+  - cd graphql-playground-middleware-express
+  - yarn link
+  - cd ..
+  - cd graphql-playground-middleware-hapi
+  - yarn link
+  - cd ..
+  - cd graphql-playground-middleware-koa
+  - yarn link
+  - cd ..
+  - cd graphql-playground-middleware-lambda
   - yarn link
   - cd ..
   - cd graphql-playground-electron
   - yarn link graphql-playground-react
+  - yarn link graphql-playground-html
+  - yarn link graphql-playground-middleware-express
+  - yarn link graphql-playground-middleware-hapi
+  - yarn link graphql-playground-middleware-koa
+  - yarn link graphql-playground-middleware-lambda
   - yarn install
   - yarn release
 

@@ -18,6 +18,8 @@
     "rimraf": "2.6.2"
   },
   "dependencies": {
-    "dotenv": "^5.0.1"
+    "dotenv": "^5.0.1",
+    "immutable": "^3.8.2",
+    "redux-actions": "^2.6.1"
   }
 }
